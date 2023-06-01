@@ -57,6 +57,40 @@ class Liza::Unit
     s.ljust(LOG_JUST)
   end
 
+  def self.hex_to_rgb(hex)
+    hex = hex[1..-1] if hex[0] == "#"
+    r = hex[0..1].to_i(16)
+    g = hex[2..3].to_i(16)
+    b = hex[4..5].to_i(16)
+    return r, g, b
+end
+
+  def self.build_log_sidebar_for source, method_key, method_sep, panel_key: nil
+    source = (source.is_a? Class) ? source : source.class
+    source_color = source.log_color
+    source = source.to_s
+
+    if defined? DevBox
+      y = DevBox[:terminal].short(source_color)
+      if y
+        rgb = hex_to_rgb(y)
+        # puts "source_color: #{source_color.inspect} y: #{y.inspect} rgb: #{rgb}".underline
+        s = "\e[1m\e[38;2;#{rgb[0]};#{rgb[1]};#{rgb[2]}m#{source}\e[0m"
+      else
+        # s = source.bold.colorize(source_color)
+      end
+    else
+      # s = source.bold.colorize(source_color)
+    end
+    
+    s ||= source.bold.colorize(source_color)
+
+    s << "[:#{panel_key}]" if panel_key
+    s << "#{method_sep}#{method_key}"
+    s.ljust(LOG_JUST)
+  end
+
+
   # NOTE: This code needs to be optimized.
   def self._log_extract_method_name kaller
     kaller.each do |s|

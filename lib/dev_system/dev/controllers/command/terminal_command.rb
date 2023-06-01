@@ -19,4 +19,17 @@ class DevSystem::TerminalCommand < DevSystem::Command
     terminal_klass.call Array(args[1..-1])
   end
 
+  def pallet args
+    log "args = #{args.inspect}"
+
+    # 2. FIND terminal
+
+    if args[0]
+      args[0] = "#{args[0]}_pallet"
+      call args
+    else
+      DevBox[:terminal].pallet.call args
+    end
+  end
+
 end
