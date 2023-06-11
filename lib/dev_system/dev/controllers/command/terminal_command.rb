@@ -19,4 +19,15 @@ class DevSystem::TerminalCommand < DevSystem::Command
     terminal_klass.call Array(args[1..-1])
   end
 
+  def self.pallet args
+    log "args = #{args.inspect}"
+
+    # 2. FIND terminal
+
+    args[0] ||= "solarized"
+    args[0] = "#{args[0]}_pallet"
+
+    call args
+  end
+
 end
