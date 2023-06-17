@@ -3,7 +3,7 @@ GEM
   specs:
     colorize (0.8.1)
     dotenv (2.8.1)
-    lizarb (1.0.4)
+    lizarb (1.0.5)
       colorize (~> 0.8)
       dotenv (~> 2.8)
       zeitwerk (~> 2.6)

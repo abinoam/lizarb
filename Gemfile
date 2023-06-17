@@ -35,3 +35,5 @@ group :web do
   gem "rackup", "~> 0.2.2"
   gem "puma", "~> 5.6"
 end
+
+gem "tty-prompt", "~> 0.23.1"

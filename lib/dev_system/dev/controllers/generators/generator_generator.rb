@@ -27,4 +27,25 @@ class DevSystem::GeneratorGenerator < Liza::Generator
     content render "template_test.rb"
   end
 
+  #
+
+  def self.install args
+    log "args = #{args.inspect}"
+
+    new(nil, nil, nil).install args
+  end
+
+  def install args
+    log "args = #{args.inspect}"
+
+    # if app_env_exists?
+    #   log "env files already exist".red.blink
+    # else
+    #   write_env_files
+    # end
+
+    puts
+    log "done"
+  end
+
 end

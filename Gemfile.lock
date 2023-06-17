@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lizarb (1.0.4)
+    lizarb (1.0.5)
       colorize (~> 0.8)
       dotenv (~> 2.8)
       tty-prompt (~> 0.23.1)
@@ -83,6 +83,7 @@ DEPENDENCIES
   redis (~> 5.0)
   sassc (~> 2.4)
   sqlite3 (~> 1.5)
+  tty-prompt (~> 0.23.1)
 
 BUNDLED WITH
    2.3.22
