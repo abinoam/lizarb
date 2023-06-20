@@ -12,6 +12,14 @@ class Liza::UnitTest < Liza::Test
     assert subject_class.settings == {log_level: :normal, log_color: :white}
   end
 
+  test :subject_class, :defined_methods do
+    assert_equality subject_class.defined_methods, [:get, :log_color, :inherited, :fetch, :part, :set, :add, :log_level, :log_level?, :log?, :inherited_explicitly_sets_system, :settings, :__define_defining_methods, :available_methods, :procedure, :const_missing, :proceed, :unit_methods, :unit_instance_methods, :defining_methods, :defining_instance_methods, :available_instance_methods, :log]
+  end
+
+  test :subject_class, :defined_instance_methods do
+    assert_equality subject_class.defined_instance_methods, [:get, :set, :log_color, :fetch, :add, :log_level, :log_level?, :log?, :settings, :procedure, :proceed, :log]
+  end
+
   test :settings_inheritance do
     class_a = Class.new(subject_class) do
       set :number, 1

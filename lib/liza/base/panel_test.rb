@@ -12,6 +12,18 @@ class Liza::PanelTest < Liza::UnitTest
     assert subject_class.log_color == :white
   end
 
+  #
+
+  test :subject_class, :defined_methods do
+    assert_equality subject_class.defined_methods, [:box, :on_connected, :puts, :panel_methods, :panel_instance_methods]
+  end
+
+  test :subject_class, :defined_instance_methods do
+    assert_equality subject_class.defined_instance_methods, [:box, :started, :short, :push]
+  end
+
+  #
+
   test :short do
     assert_equality subject.short("m"), "m"
     assert_equality subject.short("i"), "i"

@@ -14,4 +14,14 @@ class Module
     nil
   end
 
+  #
+
+  def defined_methods
+    methods(false)
+  end
+
+  def defined_instance_methods
+    instance_methods(false)
+  end
+
 end

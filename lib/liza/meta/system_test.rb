@@ -8,4 +8,16 @@ class Liza::SystemTest < Liza::UnitTest
     assert subject_class.log_color == :white
   end
 
+  #
+
+  test :subject_class, :defined_methods do
+    assert_equality subject_class.defined_methods, [:system_methods, :system_instance_methods, :registrar, :const, :insertion]
+  end
+
+  test :subject_class, :defined_instance_methods do
+    assert_equality subject_class.defined_instance_methods, []
+  end
+
+  #
+
 end

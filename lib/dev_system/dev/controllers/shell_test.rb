@@ -11,6 +11,16 @@ class DevSystem::ShellTest < Liza::ControllerTest
 
   #
 
+  test :subject_class, :defined_methods do
+    assert_equality subject_class.defined_methods, [:ruby_version, :unix?, :engine, :ruby?, :mac?, :windows?, :shell_methods, :shell_instance_methods, :linux?, :os, :jruby?]
+  end
+
+  test :subject_class, :defined_instance_methods do
+    assert_equality subject_class.defined_instance_methods, []
+  end
+
+  #
+
   test :subject_class, :windows? do
     original = subject_class.windows?
     subject_class.instance_variable_set(:@windows, true)

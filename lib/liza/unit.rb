@@ -146,4 +146,52 @@ class Liza::Unit
 
   end
 
+  def self.inherited sub
+    super
+    __define_defining_methods sub
+  end
+
+
+  # defining_methods defining_instance_methods
+
+  def self.__define_defining_methods sub
+    return if sub.name.nil?
+
+    name = sub.name.split("::").last.snakefy
+    
+    sub.class_eval <<-RUBY, __FILE__, __LINE__ + 1
+
+      def self.#{name}_methods
+        #{sub}.defined_methods
+      end
+    
+      def self.#{name}_instance_methods
+        #{sub}.defined_instance_methods
+      end
+  
+      def self.defining_methods
+        #{sub}.defined_methods
+      end
+    
+      def self.defining_instance_methods
+        #{sub}.defined_instance_methods
+      end
+    
+    RUBY
+  end
+
+  # unit_methods unit_instance_methods
+  
+  __define_defining_methods self
+
+  # available_methods available_instance_methods
+
+  def self.available_methods ref = ::Object
+    methods - ref.methods
+  end
+
+  def self.available_instance_methods ref = ::Object
+    instance_methods - ref.instance_methods
+  end
+
 end

@@ -14,4 +14,15 @@ class Class
   def last_namespace
     name.rpartition('::')[-1]
   end
+
+  #
+
+  def defined_methods
+    methods(false) - superclass.methods(false)
+  end
+
+  def defined_instance_methods
+    instance_methods(false) - superclass.instance_methods(false)
+  end
+
 end

@@ -9,4 +9,16 @@ class DevSystem::CommandTest < Liza::ControllerTest
     assert subject_class.log_color == :green
   end
 
+  #
+
+  test :subject_class, :defined_methods do
+    assert_equality subject_class.defined_methods, [:call, :command_methods, :command_instance_methods]
+  end
+
+  test :subject_class, :defined_instance_methods do
+    assert_equality subject_class.defined_instance_methods, [:call]
+  end
+
+  #
+
 end
