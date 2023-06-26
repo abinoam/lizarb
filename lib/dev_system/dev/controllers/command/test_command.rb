@@ -6,6 +6,8 @@ class DevSystem::TestCommand < DevSystem::Command
     now = Time.now
     test_classes = Liza::Test.descendants
 
+    # test_classes = [HamlConverterGeneratorTest]
+
     _call_silence_base_units
     
     if Lizarb::IS_APP_DIR
